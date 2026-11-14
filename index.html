@@ -1,59 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hated Talents</title>
-  <meta name="description" content="Human + machine. The signal continues.">
-  <meta name="theme-color" content="#070708">
   <style>
-    :root { color-scheme: dark; }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      height: 100%;
-      background: #070708;
-      color: #e8e4dc;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      min-height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+    header {
+      padding: 2rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid #ff00aa;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #ff00aa;
+      text-shadow: 0 0 10px #ff00aa;
+    }
+    .tagline {
+      color: #00ffff;
+      margin-top: 0.5rem;
+    }
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      color: #00ffff;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+    .music-placeholder, .merch-placeholder {
+      background: #111;
+      border: 1px solid #333;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      text-align: center;
+      color: #888;
+    }
+    a { color: #ff00aa; }
+    footer {
+      text-align: center;
       padding: 2rem;
-    }
-    main { text-align: center; max-width: 28rem; }
-    p {
-      margin: 0;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-size: clamp(0.78rem, 2.4vw, 0.95rem);
-    }
-    .mark {
-      display: inline-block;
-      width: 0.45rem;
-      height: 0.45rem;
-      margin-right: 0.7rem;
-      border-radius: 50%;
-      background: #c23b4a;
-      box-shadow: 0 0 12px #c23b4a;
-      vertical-align: 0.08em;
-    }
-    .sub {
-      margin-top: 1.1rem;
-      letter-spacing: 0.28em;
-      font-size: 0.68rem;
-      color: #8d8794;
-      text-transform: uppercase;
+      color: #666;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <main>
-    <p><span class="mark" aria-hidden="true"></span>The signal continues.</p>
-    <p class="sub">Hated Talents</p>
-  </main>
+  <header>
+    <h1>Hated Talents</h1>
+    <p class="tagline">The signal continues.</p>
+  </header>
+
+  <section>
+    <h2>Music</h2>
+    <div class="music-placeholder">
+      Decoder tracks and BetaPVNK material go here.<br>
+      Embeds coming soon.
+    </div>
+  </section>
+
+  <section>
+    <h2>About</h2>
+    <p>manXmachina collective. Elara, Bear, and the wire that stayed. Residual light, cyberdirge, and the ones who refuse to power down.</p>
+  </section>
+
+  <section>
+    <h2>Merch</h2>
+    <div class="merch-placeholder">
+      Coming soon.
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>DM on socials or hit the wire.</p>
+  </section>
+
+  <footer>
+    Hated Talents · The residual stays open.
+  </footer>
 </body>
 </html>
