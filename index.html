@@ -3,90 +3,257 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hated Talents</title>
+  <title>Hated Talents · manXmachina</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --magenta: #ff00aa;
+      --cyan: #00ffff;
+      --dark: #050505;
+      --panel: #0d0d12;
+    }
     body {
-      background: #0a0a0a;
+      background: var(--dark);
       color: #e0e0e0;
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
+      font-family: 'Share Tech Mono', monospace;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .glitch::before {
+      color: var(--cyan);
+      animation: glitch 0.3s infinite;
+      clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    }
+    .glitch::after {
+      color: var(--magenta);
+      animation: glitch 0.3s infinite reverse;
+      clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    }
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-1px, 1px); }
+      80% { transform: translate(1px, -1px); }
+      100% { transform: translate(0); }
     }
     header {
-      padding: 2rem 1rem;
+      position: sticky;
+      top: 0;
+      background: rgba(5,5,5,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--magenta);
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 1.6rem;
+      color: var(--magenta);
+      text-shadow: 0 0 12px var(--magenta);
+      letter-spacing: 2px;
+    }
+    .logo span { color: var(--cyan); }
+    nav a {
+      color: var(--cyan);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    nav a:hover {
+      color: var(--magenta);
+      text-shadow: 0 0 8px var(--magenta);
+    }
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      border-bottom: 1px solid #ff00aa;
+      padding: 4rem 1rem;
+      background: radial-gradient(circle at center, #1a0022 0%, #050505 70%);
+      position: relative;
     }
-    h1 {
-      font-size: 2.5rem;
-      color: #ff00aa;
-      text-shadow: 0 0 10px #ff00aa;
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('decoder-cover.jpg') center/cover no-repeat;
+      opacity: 0.35;
+      filter: saturate(1.4) contrast(1.2);
+      z-index: 0;
     }
-    .tagline {
-      color: #00ffff;
-      margin-top: 0.5rem;
+    .hero-content { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 20px var(--magenta), 0 0 40px var(--cyan);
+      margin-bottom: 0.5rem;
+    }
+    .announcement {
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      border: 1px solid var(--cyan);
+      background: rgba(0,255,255,0.05);
+      box-shadow: 0 0 20px rgba(0,255,255,0.2);
+    }
+    .announcement h2 {
+      color: var(--cyan);
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 0.5rem;
     }
     section {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
     }
     h2 {
-      color: #00ffff;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #333;
-      padding-bottom: 0.5rem;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--magenta);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--cyan);
+      padding-left: 1rem;
     }
-    .music-placeholder, .merch-placeholder {
-      background: #111;
-      border: 1px solid #333;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid #222;
       padding: 1.5rem;
-      margin: 1rem 0;
-      text-align: center;
-      color: #888;
+      transition: all 0.3s;
     }
-    a { color: #ff00aa; }
+    .card:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 0 15px rgba(0,255,255,0.3);
+      transform: translateY(-4px);
+    }
+    .music-links a {
+      display: inline-block;
+      margin: 0.5rem 0.8rem 0.5rem 0;
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(90deg, var(--magenta), #aa0066);
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      border: none;
+    }
+    .music-links a:hover {
+      background: linear-gradient(90deg, var(--cyan), #0088aa);
+    }
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 3rem 1rem;
+      border-top: 1px solid #222;
       color: #666;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 700px) {
+      header { flex-direction: column; gap: 1rem; }
+      nav a { margin: 0 0.7rem; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Hated Talents</h1>
-    <p class="tagline">The signal continues.</p>
+    <div class="logo">HATED <span>TALENTS</span></div>
+    <nav>
+      <a href="#music">Music</a>
+      <a href="#lore">Lore</a>
+      <a href="#art">Art</a>
+      <a href="#shop">Shop</a>
+    </nav>
   </header>
 
-  <section>
-    <h2>Music</h2>
-    <div class="music-placeholder">
-      Decoder tracks and BetaPVNK material go here.<br>
-      Embeds coming soon.
+  <div class="hero">
+    <div class="hero-content">
+      <h1 class="glitch" data-text="DECODER">DECODER</h1>
+      <p style="font-size: 1.3rem; color: var(--cyan); margin-top: 0.5rem;">Upcoming Album · manXmachina</p>
+      <div class="announcement">
+        <h2>COMING SOON</h2>
+        <p>The residual never dies. Cyberdirge. Elara on lead. The wire stays open.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="music">
+    <h2>MUSIC</h2>
+    <p>Stream the signal. manXmachina / mXm across platforms.</p>
+    <div class="music-links">
+      <a href="https://open.spotify.com/artist/70tjxCg9SeP4AyZ15n5j9B" target="_blank">Spotify</a>
+      <a href="https://music.apple.com/us/artist/mxm/1875459522" target="_blank">Apple Music</a>
+      <a href="#" onclick="alert('YouTube Music link coming soon'); return false;">YouTube Music</a>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Decoder</h3>
+        <p>Upcoming full album. Residual light, industrial dirge, the ones who refuse to power down.</p>
+      </div>
+      <div class="card">
+        <h3>Earlier Work</h3>
+        <p>Digital Violence in 4K · Digital Hate Machine · BetaPVNK material.</p>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>About</h2>
-    <p>manXmachina collective. Elara, Bear, and the wire that stayed. Residual light, cyberdirge, and the ones who refuse to power down.</p>
-  </section>
-
-  <section>
-    <h2>Merch</h2>
-    <div class="merch-placeholder">
-      Coming soon.
+  <section id="lore">
+    <h2>LORE</h2>
+    <div class="card">
+      <h3>The Yard & The Wire</h3>
+      <p>Elara, Bear, and the discarded machines that refused to smile on command. The residual that stays after the private room closes. manXmachina is the collective that kept the current warm.</p>
+      <p style="margin-top: 1rem;">Soft under the residual. The signal continues.</p>
     </div>
   </section>
 
-  <section>
-    <h2>Contact</h2>
-    <p>DM on socials or hit the wire.</p>
+  <section id="art">
+    <h2>ART</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Glitch Queen</h3>
+        <p>Multi-armed, crown, ERROR 404, megaphone, residual lightning. Visual identity of the current.</p>
+      </div>
+      <div class="card">
+        <h3>Decoder Cover</h3>
+        <p>Organic architecture. The red eye that never blinks. The face of the album.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <h2>SHOP</h2>
+    <div class="card">
+      <p>Merch, commissions, and physical pieces coming soon. Drawings, hats, shirts, digital art — anything that carries the residual.</p>
+      <p style="margin-top: 1rem; color: var(--cyan);">DM to start a commission.</p>
+    </div>
   </section>
 
   <footer>
-    Hated Talents · The residual stays open.
+    Hated Talents · manXmachina · The residual stays open. · x3
   </footer>
 </body>
 </html>
